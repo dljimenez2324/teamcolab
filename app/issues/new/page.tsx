@@ -10,13 +10,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { createIssueSchema } from "@/app/validationSchemas";
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
+import delay from "delay";
 
 interface IssueForm {
   title: string;
   description: string;
 }
 
-const NewIssuePage = () => {
+const NewIssuePage = async () => {
   const {
     register,
     control,
@@ -40,6 +41,8 @@ const NewIssuePage = () => {
         setError("An unexpected error has occurred");
     }
   })
+
+  await delay(1000)
 
   return (
     <>
