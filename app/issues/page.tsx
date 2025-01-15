@@ -8,6 +8,7 @@ import IssuesActions from "./IssuesActions";
 import Link from "../components/Link";
 
 const IssuesPage = async () => {
+  
   const issues = await prisma.issue.findMany();
 
   return (
@@ -52,3 +53,4 @@ const IssuesPage = async () => {
 };
 
 export default IssuesPage;
+
