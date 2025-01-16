@@ -14,6 +14,17 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
 
   const [error, setError] = useState(false);
 
+  const handleDelete = async () => {
+    try {
+      // throw new Error("Not implemented");
+      await axios.delete(`/api/issues/${issueId}`);
+      router.push("/issues");
+      router.refresh();
+    } catch (error) {
+      setError(true);
+    }
+  };
+
   return (
     <>
       
@@ -37,19 +48,7 @@ const DeleteIssueButton = ({ issueId }: { issueId: number }) => {
               <Button
                 variant="solid"
                 color="red"
-                onClick={() => {
-
-                  try {
-                    // throw new Error("Not implemented");
-                    axios.delete(`/api/issues/${issueId}`);
-                    router.push("/issues");
-                    router.refresh();
-                    
-                  } catch (error) {
-                    setError(true);
-                  }
-
-                }}
+                onClick={handleDelete}
               >
                 Delete Issue
               </Button>
