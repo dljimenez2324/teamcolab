@@ -41,4 +41,16 @@ const NavBar = () => {
   );
 };
 
+const AuthStatus = () => {
+
+// adding useSession hook to get the current user session
+// const { status, data: session} = useSession();
+
+  return (
+    <>
+    
+    </>
+  );
+}
+
 export default NavBar;
