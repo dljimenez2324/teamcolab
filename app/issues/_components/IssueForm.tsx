@@ -6,12 +6,13 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { issueSchema } from "@/app/validationSchemas";
+
 import ErrorMessage from "@/app/components/ErrorMessage";
 import Spinner from "@/app/components/Spinner";
 import z from 'zod'
 import dynamic from "next/dynamic";
 import { Issue } from "@prisma/client";
+import { issueSchema } from "@/app/validationSchemas";
 
 
 // interface IssueForm {
@@ -45,11 +46,10 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
     try {
       setIsSubmitting(true);
       if(issue)
-        await axios.patch('/api/issues/' + issue.id, data);
-      
-      else
-        await axios.post("/api/issues", data);
-        router.push("/issues");
+       await axios.patch('/api/issues/' + issue.id, data)
+    else
+      await axios.post("/api/issues", data);
+      router.push("/issues/list");
  
     } catch (error) {
       setIsSubmitting(false);
@@ -77,7 +77,7 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
           />
           <ErrorMessage>{errors.description?.message}</ErrorMessage>
           <Button disabled={isSubmitting}>
-            {issue ? "Update Issue": "Submit New Issue"}  {isSubmitting && <Spinner />}
+         {issue ? "Update Issue": "Submit New Issue"}   {isSubmitting && <Spinner />}
           </Button>
         </form>
       </div>
@@ -86,5 +86,3 @@ const IssueForm = ({issue}:{issue?:Issue}) => {
 };
 
 export default IssueForm;
-
-

@@ -28,11 +28,15 @@ body {
 .radix-themes {
 	--default-font-family: var(--font-inter);
 }
-
 h1 {
-  color: azure !important;
+  color: azure!important;
+}
+strong{
+  color: azure!important;
 }
 
-strong {
-  color: azure !important;
+@layer utilities {
+  .nav-link {
+    @apply text-zinc-600 hover:text-zinc-300 transition-colors
+  }
 }

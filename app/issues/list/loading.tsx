@@ -1,5 +1,4 @@
 import { Table } from "@radix-ui/themes";
-import IssuesStatusBadge from "../components/IssuesStatusBadge";
 import { Skeleton } from "@/app/components";
 import IssuesActions from "./IssuesActions";
 
@@ -8,7 +7,7 @@ const issues = [1, 2, 3, 4, 5];
 const LoadingIssuesPage = () => {
   return (
     <>
-      <IssuesActions />
+    <IssuesActions />
       <Table.Root variant="surface">
         <Table.Header>
           <Table.Row>
